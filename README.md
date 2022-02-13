@@ -9,28 +9,23 @@ To develop a python control code to move the mobilerobot along the predefined pa
 
 ## Procedure
 
-Step1:
+### Step 1:
+Use from robomaster import robot
 
-<br/>
+### Step 2:
+Choose the x,y,z - axis movement distance(meters).
 
-Step2:
+### Step 3:
+Give ep_chassis.move to move straight.
 
-<br/>
+### Step 4:
+Give time.sleep() for a break.
 
-Step3:
-
-<br/>
-
-Step4:
-
-<br/>
-
-Step5:
-
-<br/>
-
+### Step 5:
+Give ep_chassis.drive_speed to have a circular movement.
 ## Program
-```python
+python
+~~~
 from robomaster import robot
 import time
 
@@ -41,19 +36,32 @@ if __name__ == '__main__':
     ep_chassis = ep_robot.chassis
 
     ## Write your code here
+    '''
+    x = x-axis movement distance,( meters) [-5,5]
+    y = y-axis movement distance,( meters) [-5,5]
+    z = rotation about z axis ( degree)[-180,180]
+    xy_speed = xy axis movement speed,( unit meter/second) [0.5,2]
+    '''
+   
+    ep_chassis.move(x=0.9, y=0, z=0, xy_speed=0.75).wait_for_completed()
 
-
-
-    
+    ep_chassis.drive_speed(x=0.05, y=0, z=-15)
+    time.sleep(5)
+    ep_chassis.move(x=1.9, y=0, z=0, xy_speed=0.75).wait_for_completed()
+    ep_chassis.drive_speed(x=0.20, y=0, z=5)
+    ep_chassis.drive_speed(x=0.25, y=0, z=20)
+    ep_chassis.move(x=0.9, y=0, z=0, xy_speed=0.75).wait_for_completed()
+    ep_chassis.drive_speed(x=0.20, y=0, z=21)
+    time.sleep(5)
+    ep_chassis.drive_speed(x=1, y=0, z=5)
     ep_robot.close()
-```
-
+~~~
 ## MobileRobot Movement Image:
 
 ![robo](./img/robomaster.png)
 
 Insert image here
-
+![output](m8.png)
 
 <br/>
 <br/>
@@ -64,22 +72,15 @@ Insert image here
 
 Upload your video in Youtube and paste your video-id here
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+https://youtu.be/MqReMNWSRUw
 
-<br/>
-<br/>
-<br/>
-<br/>
 
 ## Result:
 Thus the python program code is developed to move the mobilerobot in the predefined path.
 
-
-<br/>
-<br/>
-
-```
 Mobile Robotics Laboratory
+<br>
 Department of Artificial Intelligence and Data Science/ Machine Learning
+<br>
 Saveetha Engineering College
-```
+
